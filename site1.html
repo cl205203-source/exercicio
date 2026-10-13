@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de IMC</title>
+</head>
+<body>
+
+  <h2>Calculadora de IMC</h2>
+
+
+  <label>Peso (kg):</label><br>
+  <input type="number" id="peso"><br><br>
+
+  <label>Altura (m):</label><br>
+  <input type="number" id="altura"><br><br>
+
+  <button onclick="calcularIMC()">Calcular IMC</button>
+
+  <hr>
+  <span id="resultado"></span>
+
+  <script>
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById("peso").value);
+      const altura = parseFloat(document.getElementById("altura").value);
+      const res = document.getElementById("resultado");
+
+      if (isNaN(peso) || isNaN(altura) || altura <= 0) {
+        res.textContent = "Por favor, insira peso e altura válidos.";
+        document.getElementById("peso").style.borderColor = "red";
+        document.getElementById("altura").style.borderColor = "red";
+        return;
+      }
+
+      const imc = peso / (altura * altura);
+      const imcFormatado = imc.toFixed(1);
+
+      let mensagem = "";
+      let cor = "";
+      let bk = "";
+
+      if (imc < 18.5) {
+        mensagem = "Abaixo do peso";
+        bk = "yellow";
+        cor = "red";
+      } else if (imc < 24.9) {
+        mensagem = "Peso normal";
+        bk = "green";
+        cor = "white";        
+      } else if (imc < 29.9) {
+        mensagem = "Sobrepeso";
+        bk = "orange";
+        cor = "white";
+      } else if (imc < 34.9) {
+        mensagem = "Obesidade grau 1";
+        bk = "red";
+        cor = "black";
+      } else if (imc < 39.9) {
+        mensagem = "Obesidade grau 2";
+        bk = "red";
+        cor = "black";        
+      } else {
+        mensagem = "Obesidade grau 3 (mórbida)";
+        bk = "red";
+        cor = "black";        
+      }
+
+      res.textContent = "IMC: " + imcFormatado + " — " + mensagem;
+      res.style.color = cor;
+      res.style.backgroundColor = bk;
+    }
+  </script>
+
+</body>
+</html>
