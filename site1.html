@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <h2>Calculadora de IMC</h2>
+  <h2>Calculadora de SABOR</h2>
 
 
   <label>Peso (kg):</label><br>
@@ -15,13 +15,13 @@
   <label>Altura (m):</label><br>
   <input type="number" id="altura"><br><br>
 
-  <button onclick="calcularIMC()">Calcular IMC</button>
+  <button onclick="calcularIMC()">Calcular SABOR</button>
 
   <hr>
   <span id="resultado"></span>
 
   <script>
-    function calcularIMC() {
+    function calcularSABOR() {
       const peso = parseFloat(document.getElementById("peso").value);
       const altura = parseFloat(document.getElementById("altura").value);
       const res = document.getElementById("resultado");
